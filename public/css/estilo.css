@@ -127,6 +127,17 @@ body {
     align-items: center;   
     text-align: center;    
 }
+.imagemPratos img{
+  display: flex;
+  align-items: center;
+  width: 400px;
+  border-radius: 20px;
+  transition: 0.3;
+}
+.imagemPratos img:hover{
+   filter: grayscale(0%) brightness(0.8);
+    transform: scale(1.05);
+}
 
 /* TÍTULO */
 .titulo-secao {
@@ -156,8 +167,15 @@ body {
 .sessao p span{
   font-weight: bold;
   font-style: oblique;
-  color: #b89355;
+  color: #C9A66B;
   margin-left: 135px;
+}
+.sessao p label{
+  text-align: center;
+  align-items: center;
+  display: flex;
+  font-size: 15px;
+  font-weight: bold;
 }
 .citacao{
   color: #1C1C1C;
@@ -165,6 +183,55 @@ body {
   font-style: italic;
   margin-right:0 ;
   align-items: center;
+}
+.secao-dicas {
+  display: flex;
+  flex-direction: column;
+}
+
+.secao-dicas .titulo-secao {
+  text-align: center;
+}
+
+.secao-dicas .lista-dicas {
+  width: 100%;
+}
+.lista-dicas {
+  margin-top: 1px;
+  padding-left: 10px;
+}
+
+.card-dica {
+  padding: 16px 0 16px 18px; 
+  border-bottom: 1px solid #e5d3b3;
+  position: relative;
+}
+
+/* detalhe lateral elegante */
+.card-dica::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 18px;
+  width: 4px;
+  height: 60%;
+  background: #C9A66B;
+  border-radius: 2px;
+}
+
+.card-dica h3 {
+  font-size: 16px;
+  color: #C9A66B;
+  margin-bottom: 6px;
+  align-items: center;
+  font-weight: 600;
+}
+
+.card-dica p {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.6;
+  max-width: 800px;
 }
 
 .social .container{
@@ -213,7 +280,9 @@ body {
 .social .container .boxes .box img:hover {
     filter: grayscale(0%) brightness(0.8);
     transform: scale(1.05);
-}
+  }
+
+  
 .footer .container {
     display: flex;
     flex-direction: column;
@@ -456,6 +525,8 @@ input {
   background-size: cover;
   animation-iteration-count: infinite;
 }
+
+
 
 @keyframes bell {
   0%   {transform: rotate(25deg)}
