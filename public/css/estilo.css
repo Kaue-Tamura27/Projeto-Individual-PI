@@ -4,7 +4,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: black;
 }
 
 :root {
@@ -17,132 +16,230 @@ body {
 
 .container {
   display: flex;
-  width: 80%;
+  width: 100%;
   margin: auto;
 }
 
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   height: var(--tamanho-header);
-  border-bottom: 2px solid #32b9cd;
+  border-bottom: 20px solid #C9A66B;
 }
 
 .header .container {
-  justify-content: space-between;
+    display: flex;   
+    justify-content: space-around;
+    align-items: center;
+    background-color: #1C1C1C;
+    height: 100px;
+    border-bottom: 3px solid #C9A66B;
+}
+
+.header .container .titulo {
+    color: #C9A66B;
+    font-size: 30px;
+    letter-spacing: 9px;
+}
+
+
+.header .container .navbar{
+    display: flex;
+    gap: 3rem;
+    list-style: none;
+}
+
+.header .container .navbar li a,
+.header .container .navbar li{
+    color: #EDEDED;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 16px;
+}
+
+
+.header .container .navbar li a:hover{
+    color: #C9A66B;
+}
+
+
+.header .container .navbar .agora,
+.banner .container p span{
+    color: #C9A66B;
+    font-weight: bold;
+}
+
+.banner{
+    background-image: url('https://img.freepik.com/fotos-gratis/chef-derramando-molho-especial-em-costelas-de-porco-na-cozinha_181624-61946.jpg?semt=ais_hybrid&w=740&q=80');
+    filter: grayscale(0%);
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+}
+
+
+.banner .container{
+    height: 500px;
+    width: 30%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.banner .container p{
+    color: #F5F5F5;
+    font-size: 42px;
+    width: 350px;
+    text-align: left;
+    line-height: 1.5;
+    font-weight: 400;
+    
+}
+
+
+
+.sessao {
+    padding: 80px 0;
+    text-align: center;
+    transition: 0.5s;
+    background-color: #F4F1EC;
+    color: #1C1C1C;
+}
+.sessao.dark {
+    background-color: #1C1C1C;
+    color: #EDEDED;
+}
+ .sessao.info {
+    padding: 80px 0;
+    text-align: center;
+    background-color: #F4F1EC;
+}
+
+.sessao.info.dark {
+    background-color: #1C1C1C;
+    color: #EDEDED;
+}
+
+.sessao.info .container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;   
+    text-align: center;    
+}
+
+/* TÍTULO */
+.titulo-secao {
+    font-size: 32px;
+    margin-bottom: 5px;
+    color: #C9A66B;
+}
+
+/* SUBTÍTULO */
+.subtitulo {
+    font-size: 15px;
+    margin-top: 2px;
+    margin-bottom: 30px;
+    color: #575650;
+}
+
+/* TEXTO */
+.texto {
+    max-width: 800px;
+    margin: auto;
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: justify;
+    hyphens: auto;
+
+}
+.sessao p span{
+  font-weight: bold;
+  font-style: oblique;
+  color: #b89355;
+  margin-left: 135px;
+}
+.citacao{
+  color: #1C1C1C;
+  font-size: 13px;
+  font-style: italic;
+  margin-right:0 ;
   align-items: center;
-  height: 100%;
 }
 
-.header a {
-  text-decoration: none;
-  color: #e3b062;
-}
-
-.agora {
-  font-weight: 800;
-}
-
-.navbar {
-  width: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  list-style: none;
-  color: #e3b062;
-}
-
-.titulo {
-  color: #32b9cd;
-  width: fit-content;
-  font-weight: 500;
-}
-
-.header h1 {
-  margin: 0;
-}
-
-/* BANNER */
-
-.banner {
-  height: var(--tamanho-banner);
-  color: white;
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
-  background-size: cover;
-}
-
-.banner .container {
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.banner .container p {
-  width: 50%;
-  margin: 0;
-  padding: 0;
-  font-size: 36px;
-}
-
-.banner .container span {
-  font-weight: 800;
-}
-
-/* MISSÃO VISÃO VALORES */
-
-.social {
-  background-color: #e5e5e5;
-  display: flex;
-}
-
-.social .container {
-  justify-content: center;
-}
-
-.box img {
-  width: 170px;
+.social .container{
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F4F1EC; 
 }
 
 .social .container .boxes {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding: 30px 0;
+    width: 85%;
+    display: flex;
+    justify-content: space-around;
 }
 
-.social p {
-  text-align: center;
+.social .container .boxes .box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    width: 250px;
 }
 
-.box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.social .container .boxes .box h4{
+    font-size: 1.6rem;
+    color: #1C1C1C;
+    margin-bottom: 4px;
 }
 
-/* FOOTER */
 
-.footer {
-  background-color: #32b9cd;
-  height: 150px;
-  color: #fff;
-  display: flex;
-  font-size: 15px;
+.social .container .boxes .box p{
+    font-size: 1.1rem;
+    text-align: center;
+    color: #555;
 }
 
+
+.social .container .boxes .box img{
+    width: 200px;
+    transition: 0.3s;
+    filter: grayscale(75%);
+    border-radius: 20px; 
+    transition: 0.3s;
+}
+.social .container .boxes .box img:hover {
+    filter: grayscale(0%) brightness(0.8);
+    transform: scale(1.05);
+}
 .footer .container {
-  justify-content: center;
-  text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    background-color: #1C1C1C;
+    color: #EDEDED;
+    font-size: 0.95rem;
 }
 
-.footer .container .version {
-  font-size: 12px;
+.footer .container h4 {
+    margin: 5px 0;
 }
 
-/* LOGIN */
+.footer .container .version{
+    margin-top: px;
+    color: #C9A66B;
+}
 
 .login {
-  height: var(--tamanho-login);
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
+  min-height: calc(100vh - var(--tamanho-header) - var(--tamanho-footer));
+  display: flex;
+  background-image: url('./../assets/imgs/chef1.webp');
   background-size: cover;
+
 }
 
 .login .container {
@@ -152,21 +249,21 @@ body {
 }
 
 .card {
-  width: 50%;
-  background-color: #e5e5e5;
+  width: 20%;
+  background-color: #1C1C1C;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  color: palevioletred;
+  color: #C9A66B;
   flex-direction: column;
   height: fit-content;
-  padding: 20px 0;
+  padding: 20px ;
 }
 
 .card h2 {
   margin: 0;
-  font-size: 30px;
+  font-size: 26px;
 }
 
 .formulario {
@@ -175,6 +272,7 @@ body {
   width: 80%;
   justify-content: space-around;
   flex-direction: column;
+  margin-top: 10px;
 }
 
 .formulario span {
@@ -183,16 +281,17 @@ body {
 }
 
 .formulario input {
-  border: 2px solid #32b9cd;
+  border: 2px solid #C9A66B;
   text-align: center;
   border-radius: 10px;
   margin: 0;
+  margin-top: 10px;
 }
 
 .formulario select {
-  border: 2px solid #32b9cd;
+  border: 2px solid #C9A66B;
   background-color: white;
-  color: gray;
+  color: #1C1C1C;
   height: 36px;
   text-align: center;
   border-radius: 10px;
@@ -214,13 +313,18 @@ body {
   font-weight: 600;
   font-size: 18px;
   color: #fff;
-  background-color: #ED145B;
+  background-color: #C9A66B;
   width: 120px;
-  height: 30px;
+  height: 40px;
   align-self: center;
   margin-top: 20px;
+  transition: 0.3s;
 }
-
+.botao:hover {
+    background-color: #b89355;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(201, 166, 107, 0.4);
+}
 .loading-div {
   width: 50px;
   display: none;
