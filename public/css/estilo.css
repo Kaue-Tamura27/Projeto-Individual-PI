@@ -137,6 +137,16 @@ body {
 .imagemPratos img:hover{
    filter: grayscale(0%) brightness(0.8);
     transform: scale(1.05);
+
+
+}.imagemPratosBR{
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin: 50px auto;
+  width: 400px;
+  border-radius: 20px;
+  transition: 0.3;
 }
 
 /* TÍTULO */
@@ -281,6 +291,11 @@ body {
     filter: grayscale(0%) brightness(0.8);
     transform: scale(1.05);
   }
+
+
+
+/*FOOTER*/
+
 
   
 .footer .container {
