@@ -541,6 +541,53 @@ input {
   animation-iteration-count: infinite;
 }
 
+/* QUIZ */
+
+.quiz-section {
+    min-height: 100vh;
+    background-color: #F4F1EC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+}
+
+.quiz-card {
+    width: 700px;
+    background-color: #1C1C1C;
+    border-radius: 20px;
+    padding: 40px;
+}
+
+.quiz-title {
+    color: #C9A66B;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.pergunta {
+    margin-bottom: 35px;
+}
+
+.pergunta h3 {
+    color: #C9A66B;
+    margin-bottom: 15px;
+}
+
+.pergunta label {
+    display: flex;
+    gap: 10px;
+    color: #EDEDED;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.resultado {
+    margin-top: 40px;
+    color: white;
+    text-align: center;
+}
+
 
 
 @keyframes bell {

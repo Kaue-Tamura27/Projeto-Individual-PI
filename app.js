@@ -19,6 +19,10 @@ var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 var avisosRouter = require("./src/routes/avisos");
 var medidasRouter = require("./src/routes/medidas");
+var quizRouter = require("./src/routes/quiz");
+
+
+
 //var aquariosRouter = require("./src/routes/aquarios");
 //var empresasRouter = require("./src/routes/empresas");
 
@@ -28,7 +32,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(cors());
 
-
+app.use("/quiz", quizRouter);
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/avisos", avisosRouter);
