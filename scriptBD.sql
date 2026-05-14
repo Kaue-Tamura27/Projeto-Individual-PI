@@ -45,162 +45,295 @@ CREATE TABLE resultado_personalidade (
         REFERENCES usuario(id)
 );
 
+-- PERFIS:
+-- Chef Tradicional
+-- Chef Gourmet
+-- Chef Criativo
+-- Chef Raiz
+-- Chef Fit
+-- Chef Confeiteiro
+-- Chef Aventureiro
+
 -- =====================================================
 -- PERGUNTA 1
 -- =====================================================
 
 INSERT INTO pergunta_personalidade (pergunta)
-VALUES ('Qual ambiente você prefere para cozinhar?');
+VALUES ('O que mais chama sua atenção em um prato?');
 
 INSERT INTO alternativa_personalidade
 (descricao, perfil, fkPergunta)
 VALUES
-('Cozinha da família', 'Chef Tradicional', 1),
-('Restaurante sofisticado', 'Chef Gourmet', 1),
-('Inventando receitas novas', 'Chef Criativo', 1),
-('Churrasco com amigos', 'Chef Raiz', 1);
+('O sabor que lembra bons momentos', 'Chef Tradicional', 1),
+('A apresentação cuidadosa', 'Chef Gourmet', 1),
+('A mistura de sabores diferentes', 'Chef Criativo', 1),
+('A sensação de comida feita para compartilhar', 'Chef Raiz', 1),
+('Os ingredientes equilibrados', 'Chef Fit', 1),
+('Os detalhes doces e delicados', 'Chef Confeiteiro', 1),
+('Os sabores pouco conhecidos', 'Chef Aventureiro', 1);
 
 -- =====================================================
 -- PERGUNTA 2
 -- =====================================================
 
 INSERT INTO pergunta_personalidade (pergunta)
-VALUES ('Qual ingrediente não pode faltar?');
+VALUES ('Qual atividade culinária parece mais interessante?');
 
 INSERT INTO alternativa_personalidade
 (descricao, perfil, fkPergunta)
 VALUES
-('Temperos caseiros', 'Chef Tradicional', 2),
-('Trufas e ingredientes refinados', 'Chef Gourmet', 2),
-('Ingredientes exóticos', 'Chef Criativo', 2),
-('Carne e alho', 'Chef Raiz', 2);
+('Preparar receitas clássicas', 'Chef Tradicional', 2),
+('Montar pratos elegantes', 'Chef Gourmet', 2),
+('Criar combinações diferentes', 'Chef Criativo', 2),
+('Fazer comida para várias pessoas', 'Chef Raiz', 2),
+('Pesquisar receitas saudáveis', 'Chef Fit', 2),
+('Decorar sobremesas', 'Chef Confeiteiro', 2),
+('Experimentar culinárias internacionais', 'Chef Aventureiro', 2);
 
 -- =====================================================
 -- PERGUNTA 3
 -- =====================================================
 
 INSERT INTO pergunta_personalidade (pergunta)
-VALUES ('Como você segue receitas?');
+VALUES ('Qual ingrediente você escolheria primeiro?');
 
 INSERT INTO alternativa_personalidade
 (descricao, perfil, fkPergunta)
 VALUES
-('Faço igual minha família ensinou', 'Chef Tradicional', 3),
-('Sigo tudo exatamente', 'Chef Gourmet', 3),
-('Improviso bastante', 'Chef Criativo', 3),
-('Nem olho receita', 'Chef Raiz', 3);
+('Ervas frescas', 'Chef Tradicional', 3),
+('Queijos especiais', 'Chef Gourmet', 3),
+('Molhos diferentes', 'Chef Criativo', 3),
+('Carnes temperadas', 'Chef Raiz', 3),
+('Vegetais frescos', 'Chef Fit', 3),
+('Chocolate', 'Chef Confeiteiro', 3),
+('Especiarias internacionais', 'Chef Aventureiro', 3);
 
 -- =====================================================
 -- PERGUNTA 4
 -- =====================================================
 
 INSERT INTO pergunta_personalidade (pergunta)
-VALUES ('Qual prato você escolheria fazer?');
+VALUES ('Como você prefere cozinhar?');
 
 INSERT INTO alternativa_personalidade
 (descricao, perfil, fkPergunta)
 VALUES
-('Lasanha da vó', 'Chef Tradicional', 4),
-('Risoto sofisticado', 'Chef Gourmet', 4),
-('Hambúrguer diferente', 'Chef Criativo', 4),
-('Costela na brasa', 'Chef Raiz', 4);
+('Seguindo receitas conhecidas', 'Chef Tradicional', 4),
+('Prestando atenção nos detalhes', 'Chef Gourmet', 4),
+('Mudando ingredientes livremente', 'Chef Criativo', 4),
+('De forma prática e direta', 'Chef Raiz', 4),
+('Pensando no equilíbrio nutricional', 'Chef Fit', 4),
+('Com bastante precisão', 'Chef Confeiteiro', 4),
+('Testando sabores novos', 'Chef Aventureiro', 4);
 
 -- =====================================================
 -- PERGUNTA 5
 -- =====================================================
 
 INSERT INTO pergunta_personalidade (pergunta)
-VALUES ('Qual dessas frases mais combina com você?');
+VALUES ('Qual ambiente parece mais agradável?');
 
 INSERT INTO alternativa_personalidade
 (descricao, perfil, fkPergunta)
 VALUES
-('Comida traz memória', 'Chef Tradicional', 5),
-('Cozinhar é uma arte', 'Chef Gourmet', 5),
-('Quero testar algo novo', 'Chef Criativo', 5),
-('O importante é comer bem', 'Chef Raiz', 5);
+('Uma cozinha familiar', 'Chef Tradicional', 5),
+('Um restaurante sofisticado', 'Chef Gourmet', 5),
+('Um espaço criativo', 'Chef Criativo', 5),
+('Uma área de confraternização', 'Chef Raiz', 5),
+('Um ambiente organizado e leve', 'Chef Fit', 5),
+('Uma confeitaria charmosa', 'Chef Confeiteiro', 5),
+('Uma feira gastronômica internacional', 'Chef Aventureiro', 5);
 
 -- =====================================================
 -- PERGUNTA 6
 -- =====================================================
 
 INSERT INTO pergunta_personalidade (pergunta)
-VALUES ('O que você faz primeiro ao cozinhar?');
+VALUES ('Qual palavra mais combina com você?');
 
 INSERT INTO alternativa_personalidade
 (descricao, perfil, fkPergunta)
 VALUES
-('Organizo receitas antigas', 'Chef Tradicional', 6),
-('Preparo tudo cuidadosamente', 'Chef Gourmet', 6),
-('Misturo ideias novas', 'Chef Criativo', 6),
-('Acendo a churrasqueira', 'Chef Raiz', 6);
+('Tradição', 'Chef Tradicional', 6),
+('Elegância', 'Chef Gourmet', 6),
+('Originalidade', 'Chef Criativo', 6),
+('Autenticidade', 'Chef Raiz', 6),
+('Equilíbrio', 'Chef Fit', 6),
+('Delicadeza', 'Chef Confeiteiro', 6),
+('Descoberta', 'Chef Aventureiro', 6);
 
 -- =====================================================
 -- PERGUNTA 7
 -- =====================================================
 
 INSERT INTO pergunta_personalidade (pergunta)
-VALUES ('Qual sobremesa você prefere?');
+VALUES ('Qual refeição parece mais interessante?');
 
 INSERT INTO alternativa_personalidade
 (descricao, perfil, fkPergunta)
 VALUES
-('Bolo caseiro', 'Chef Tradicional', 7),
-('Petit gâteau', 'Chef Gourmet', 7),
-('Sorvete diferente', 'Chef Criativo', 7),
-('Pudim gigante', 'Chef Raiz', 7);
+('Massas caseiras', 'Chef Tradicional', 7),
+('Risoto sofisticado', 'Chef Gourmet', 7),
+('Hambúrguer artesanal diferente', 'Chef Criativo', 7),
+('Churrasco completo', 'Chef Raiz', 7),
+('Prato nutritivo', 'Chef Fit', 7),
+('Mesa de sobremesas', 'Chef Confeiteiro', 7),
+('Prato típico de outro país', 'Chef Aventureiro', 7);
 
 -- =====================================================
 -- PERGUNTA 8
 -- =====================================================
 
 INSERT INTO pergunta_personalidade (pergunta)
-VALUES ('Qual utensílio combina mais com você?');
+VALUES ('O que mais importa ao cozinhar?');
 
 INSERT INTO alternativa_personalidade
 (descricao, perfil, fkPergunta)
 VALUES
-('Panela antiga', 'Chef Tradicional', 8),
-('Pinça culinária', 'Chef Gourmet', 8),
-('Air fryer cheia de testes', 'Chef Criativo', 8),
-('Grelha e faca', 'Chef Raiz', 8);
+('O sabor afetivo', 'Chef Tradicional', 8),
+('A experiência completa', 'Chef Gourmet', 8),
+('A criatividade da receita', 'Chef Criativo', 8),
+('A fartura da comida', 'Chef Raiz', 8),
+('O bem-estar', 'Chef Fit', 8),
+('O acabamento perfeito', 'Chef Confeiteiro', 8),
+('Experimentar algo novo', 'Chef Aventureiro', 8);
 
 -- =====================================================
 -- PERGUNTA 9
 -- =====================================================
 
 INSERT INTO pergunta_personalidade (pergunta)
-VALUES ('Como seus amigos descrevem sua comida?');
+VALUES ('Como seus amigos descreveriam sua comida?');
 
 INSERT INTO alternativa_personalidade
 (descricao, perfil, fkPergunta)
 VALUES
-('Confortável e caseira', 'Chef Tradicional', 9),
-('Elegante e refinada', 'Chef Gourmet', 9),
-('Diferente e divertida', 'Chef Criativo', 9),
-('Forte e saborosa', 'Chef Raiz', 9);
+('Aconchegante', 'Chef Tradicional', 9),
+('Refinada', 'Chef Gourmet', 9),
+('Diferente', 'Chef Criativo', 9),
+('Marcante', 'Chef Raiz', 9),
+('Leve', 'Chef Fit', 9),
+('Caprichada', 'Chef Confeiteiro', 9),
+('Surpreendente', 'Chef Aventureiro', 9);
 
 -- =====================================================
 -- PERGUNTA 10
 -- =====================================================
 
 INSERT INTO pergunta_personalidade (pergunta)
-VALUES ('Qual seria seu programa perfeito?');
+VALUES ('Qual experiência culinária você escolheria?');
 
 INSERT INTO alternativa_personalidade
 (descricao, perfil, fkPergunta)
 VALUES
-('Almoço em família', 'Chef Tradicional', 10),
-('Jantar em restaurante famoso', 'Chef Gourmet', 10),
-('Festival gastronômico', 'Chef Criativo', 10),
-('Churrasco no fim de semana', 'Chef Raiz', 10);
+('Cozinhar em família', 'Chef Tradicional', 10),
+('Participar de um jantar especial', 'Chef Gourmet', 10),
+('Criar uma receita inédita', 'Chef Criativo', 10),
+('Reunir amigos para comer', 'Chef Raiz', 10),
+('Montar um cardápio saudável', 'Chef Fit', 10),
+('Preparar doces decorados', 'Chef Confeiteiro', 10),
+('Conhecer sabores internacionais', 'Chef Aventureiro', 10);
 
 -- =====================================================
--- TESTE
+-- PERGUNTA 11
 -- =====================================================
+
+INSERT INTO pergunta_personalidade (pergunta)
+VALUES ('Qual utensílio parece mais interessante?');
+
+INSERT INTO alternativa_personalidade
+(descricao, perfil, fkPergunta)
+VALUES
+('Panela tradicional', 'Chef Tradicional', 11),
+('Pinça culinária', 'Chef Gourmet', 11),
+('Equipamentos diferentes', 'Chef Criativo', 11),
+('Churrasqueira', 'Chef Raiz', 11),
+('Mixer ou processador', 'Chef Fit', 11),
+('Bico de confeitar', 'Chef Confeiteiro', 11),
+('Wok oriental', 'Chef Aventureiro', 11);
+
+-- =====================================================
+-- PERGUNTA 12
+-- =====================================================
+
+INSERT INTO pergunta_personalidade (pergunta)
+VALUES ('Qual bebida combina mais com você?');
+
+INSERT INTO alternativa_personalidade
+(descricao, perfil, fkPergunta)
+VALUES
+('Café passado na hora', 'Chef Tradicional', 12),
+('Vinho especial', 'Chef Gourmet', 12),
+('Drink diferente', 'Chef Criativo', 12),
+('Suco bem gelado', 'Chef Raiz', 12),
+('Smoothie natural', 'Chef Fit', 12),
+('Chocolate quente', 'Chef Confeiteiro', 12),
+('Chá típico internacional', 'Chef Aventureiro', 12);
+
+-- =====================================================
+-- PERGUNTA 13
+-- =====================================================
+
+INSERT INTO pergunta_personalidade (pergunta)
+VALUES ('O que você faria em um dia livre?');
+
+INSERT INTO alternativa_personalidade
+(descricao, perfil, fkPergunta)
+VALUES
+('Preparar receitas antigas', 'Chef Tradicional', 13),
+('Visitar um restaurante renomado', 'Chef Gourmet', 13),
+('Inventar algo novo na cozinha', 'Chef Criativo', 13),
+('Fazer um churrasco', 'Chef Raiz', 13),
+('Pesquisar alimentação saudável', 'Chef Fit', 13),
+('Fazer sobremesas', 'Chef Confeiteiro', 13),
+('Conhecer comidas de outros lugares', 'Chef Aventureiro', 13);
+
+-- =====================================================
+-- PERGUNTA 14
+-- =====================================================
+
+INSERT INTO pergunta_personalidade (pergunta)
+VALUES ('Qual tipo de sobremesa parece mais interessante?');
+
+INSERT INTO alternativa_personalidade
+(descricao, perfil, fkPergunta)
+VALUES
+('Torta caseira', 'Chef Tradicional', 14),
+('Cheesecake refinado', 'Chef Gourmet', 14),
+('Sobremesa diferente', 'Chef Criativo', 14),
+('Brownie grande para dividir', 'Chef Raiz', 14),
+('Doce equilibrado', 'Chef Fit', 14),
+('Macarons decorados', 'Chef Confeiteiro', 14),
+('Doce típico internacional', 'Chef Aventureiro', 14);
+
+-- =====================================================
+-- PERGUNTA 15
+-- =====================================================
+
+INSERT INTO pergunta_personalidade (pergunta)
+VALUES ('Qual dessas frases combina mais com você?');
+
+INSERT INTO alternativa_personalidade
+(descricao, perfil, fkPergunta)
+VALUES
+('Comida também é memória', 'Chef Tradicional', 15),
+('Cada detalhe faz diferença', 'Chef Gourmet', 15),
+('Sempre dá para inovar', 'Chef Criativo', 15),
+('Boa comida aproxima pessoas', 'Chef Raiz', 15),
+('Equilíbrio é essencial', 'Chef Fit', 15),
+('Os doces têm algo especial', 'Chef Confeiteiro', 15),
+('Experimentar faz parte da diversão', 'Chef Aventureiro', 15);
 
 SELECT * FROM pergunta_personalidade;
-
 SELECT * FROM alternativa_personalidade;
-
 SELECT * FROM resultado_personalidade;
+SELECT * FROM usuario;
+
+TRUNCATE TABLE pergunta_personalidade;
+TRUNCATE TABLE alternativa_personalidade;
+
+
+
+
+
+
