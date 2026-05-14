@@ -5,7 +5,10 @@ let perfis = {
     "Chef Tradicional": 0,
     "Chef Gourmet": 0,
     "Chef Criativo": 0,
-    "Chef Raiz": 0
+    "Chef Raiz": 0,
+    "Chef Fit": 0,
+    "Chef Confeiteiro": 0,
+    "Chef Aventureiro": 0
 };
 
 async function carregarQuiz() {
