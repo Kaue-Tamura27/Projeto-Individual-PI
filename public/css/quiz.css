@@ -146,9 +146,9 @@
 .hidden {
     display: none;
 }
-/* =========================
-QUIZ PERSONALIDADE
-========================= */
+
+/*QUIZ PERSONALIDADE*/
+
 
 .quiz-section {
     min-height: calc(100vh - var(--tamanho-header) - var(--tamanho-footer));
@@ -247,9 +247,6 @@ QUIZ PERSONALIDADE
     display: none;
 }
 
-/* =========================
-ANIMAÇÕES
-========================= */
 
 @keyframes aparecer {
     from {
@@ -274,9 +271,7 @@ ANIMAÇÕES
         transform: scale(1);
     }
 }
-/* =========================
-   RESPONSIVIDADE
-========================= */
+
 
 @media screen and (max-width: 768px) {
 

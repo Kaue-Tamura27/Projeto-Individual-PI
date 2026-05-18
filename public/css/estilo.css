@@ -587,9 +587,6 @@ input {
     color: white;
     text-align: center;
 }
-
-
-
 @keyframes bell {
   0%   {transform: rotate(25deg)}
   25%  {transform: rotate(-25deg)}
