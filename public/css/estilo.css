@@ -149,14 +149,14 @@ body {
   transition: 0.3;
 }
 
-/* TÍTULO */
+/* Título */
 .titulo-secao {
     font-size: 32px;
     margin-bottom: 5px;
     color: #C9A66B;
 }
 
-/* SUBTÍTULO */
+/* Subtítulo */
 .subtitulo {
     font-size: 15px;
     margin-top: 2px;
@@ -164,7 +164,7 @@ body {
     color: #575650;
 }
 
-/* TEXTO */
+/* Texto */
 .texto {
     max-width: 800px;
     margin: auto;
@@ -217,7 +217,7 @@ body {
   position: relative;
 }
 
-/* detalhe lateral elegante */
+
 .card-dica::before {
   content: "";
   position: absolute;
@@ -295,9 +295,6 @@ body {
 
 
 /*FOOTER*/
-
-
-  
 .footer .container {
     display: flex;
     flex-direction: column;
@@ -541,7 +538,7 @@ input {
   animation-iteration-count: infinite;
 }
 
-/* QUIZ */
+/* Quiz */
 
 .quiz-section {
     min-height: 100vh;
