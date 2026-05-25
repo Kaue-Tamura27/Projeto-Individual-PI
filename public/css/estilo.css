@@ -71,8 +71,7 @@ body {
 }
 
 .banner{
-    background-image: url('https://img.freepik.com/fotos-gratis/chef-derramando-molho-especial-em-costelas-de-porco-na-cozinha_181624-61946.jpg?semt=ais_hybrid&w=740&q=80');
-    filter: grayscale(0%);
+    background-image: url('../assets/imgs/bannerchef.jpeg');
     background-size: cover;
     background-position: center;
     height: 500px;

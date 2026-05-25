@@ -101,18 +101,87 @@ function responder() {
     }
 }
 function finalizarQuiz() {
+
     let maiorPontuacao = 0;
     let perfilFinal = "";
+
     for (let perfil in perfis) {
+
         if (perfis[perfil] > maiorPontuacao) {
+
             maiorPontuacao = perfis[perfil];
             perfilFinal = perfil;
         }
     }
+
+    let totalPerguntas = perguntas.length;
+
+    let porcentagens = {
+
+        tradicional:
+            ((perfis["Chef Tradicional"] / totalPerguntas) * 100).toFixed(1),
+
+        gourmet:
+            ((perfis["Chef Gourmet"] / totalPerguntas) * 100).toFixed(1),
+
+        criativo:
+            ((perfis["Chef Criativo"] / totalPerguntas) * 100).toFixed(1),
+
+        raiz:
+            ((perfis["Chef Raiz"] / totalPerguntas) * 100).toFixed(1),
+
+        fit:
+            ((perfis["Chef Fit"] / totalPerguntas) * 100).toFixed(1),
+
+        confeiteiro:
+            ((perfis["Chef Confeiteiro"] / totalPerguntas) * 100).toFixed(1),
+
+        aventureiro:
+            ((perfis["Chef Aventureiro"] / totalPerguntas) * 100).toFixed(1)
+    };
+
+fetch("/quiz/salvarResultado", {
+
+    method: "POST",
+
+    headers: {
+        "Content-Type": "application/json"
+    },
+
+    body: JSON.stringify({
+
+        perfilFinal: perfilFinal,
+
+        tradicional: perfis["Chef Tradicional"],
+        gourmet: perfis["Chef Gourmet"],
+        criativo: perfis["Chef Criativo"],
+        raiz: perfis["Chef Raiz"],
+        fit: perfis["Chef Fit"],
+        confeiteiro: perfis["Chef Confeiteiro"],
+        aventureiro: perfis["Chef Aventureiro"],
+
+        porcentagemTradicional: porcentagens.tradicional,
+        porcentagemGourmet: porcentagens.gourmet,
+        porcentagemCriativo: porcentagens.criativo,
+        porcentagemRaiz: porcentagens.raiz,
+        porcentagemFit: porcentagens.fit,
+        porcentagemConfeiteiro: porcentagens.confeiteiro,
+        porcentagemAventureiro: porcentagens.aventureiro,
+
+        fkUsuario: sessionStorage.ID_USUARIO
+
+    })
+
+});
+
     document.querySelector(".quiz-container").innerHTML = `
+
         <div class="resultado-final">
+
             <h1>Seu resultado foi:</h1>
+
             <h2>${perfilFinal}</h2>
+            
         </div>
     `;
 }

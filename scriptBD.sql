@@ -1,23 +1,22 @@
+
+CREATE DATABASE Flavoria;
 USE Flavoria;
 
-SHOW TABLES;
-DESC pergunta;
-DESC resultado_quiz;
-DESC usuario;
-
-SELECT * FROM usuario;
-DROP TABLE pergunta_personalidade;
-DROP TABLE alternativa_personalidade;
-DROP TABLE resultado_personalidade;
+CREATE TABLE usuario(
+id INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR (100),
+email VARCHAR (100) UNIQUE,
+senha VARCHAR (100)
+);
 
 CREATE TABLE pergunta_personalidade (
     idPergunta INT PRIMARY KEY AUTO_INCREMENT,
     pergunta VARCHAR(255)
 );
 
--- =====================================================
--- TABELA DE ALTERNATIVAS
--- =====================================================
+
+--  ALTERNATIVAS
+
 
 CREATE TABLE alternativa_personalidade (
     idAlternativa INT PRIMARY KEY AUTO_INCREMENT,
@@ -30,20 +29,42 @@ CREATE TABLE alternativa_personalidade (
         REFERENCES pergunta_personalidade(idPergunta)
 );
 
--- =====================================================
+
 -- TABELA DE RESULTADO
--- =====================================================
+
 
 CREATE TABLE resultado_personalidade (
+
     idResultado INT PRIMARY KEY AUTO_INCREMENT,
-    perfilFinal VARCHAR(50),
-    dataQuiz DATETIME DEFAULT CURRENT_TIMESTAMP,
+
     fkUsuario INT,
+
+    perfilFinal VARCHAR(50),
+
+    tradicional INT,
+    gourmet INT,
+    criativo INT,
+    raiz INT,
+    fit INT,
+    confeiteiro INT,
+    aventureiro INT,
+
+    porcentagemTradicional DECIMAL(5,2),
+    porcentagemGourmet DECIMAL(5,2),
+    porcentagemCriativo DECIMAL(5,2),
+    porcentagemRaiz DECIMAL(5,2),
+    porcentagemFit DECIMAL(5,2),
+    porcentagemConfeiteiro DECIMAL(5,2),
+    porcentagemAventureiro DECIMAL(5,2),
+
+    dataQuiz DATETIME DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT fkUsuarioResultado
         FOREIGN KEY (fkUsuario)
         REFERENCES usuario(id)
+
 );
+
 
 -- PERFIS:
 -- Chef Tradicional
@@ -54,9 +75,8 @@ CREATE TABLE resultado_personalidade (
 -- Chef Confeiteiro
 -- Chef Aventureiro
 
--- =====================================================
+
 -- PERGUNTA 1
--- =====================================================
 
 INSERT INTO pergunta_personalidade (pergunta)
 VALUES ('O que mais chama sua atenção em um prato?');
@@ -72,9 +92,9 @@ VALUES
 ('Os detalhes doces e delicados', 'Chef Confeiteiro', 1),
 ('Os sabores pouco conhecidos', 'Chef Aventureiro', 1);
 
--- =====================================================
+
 -- PERGUNTA 2
--- =====================================================
+
 
 INSERT INTO pergunta_personalidade (pergunta)
 VALUES ('Qual atividade culinária parece mais interessante?');
@@ -90,9 +110,9 @@ VALUES
 ('Decorar sobremesas', 'Chef Confeiteiro', 2),
 ('Experimentar culinárias internacionais', 'Chef Aventureiro', 2);
 
--- =====================================================
+
 -- PERGUNTA 3
--- =====================================================
+
 
 INSERT INTO pergunta_personalidade (pergunta)
 VALUES ('Qual ingrediente você escolheria primeiro?');
@@ -108,9 +128,9 @@ VALUES
 ('Chocolate', 'Chef Confeiteiro', 3),
 ('Especiarias internacionais', 'Chef Aventureiro', 3);
 
--- =====================================================
+
 -- PERGUNTA 4
--- =====================================================
+
 
 INSERT INTO pergunta_personalidade (pergunta)
 VALUES ('Como você prefere cozinhar?');
@@ -126,9 +146,9 @@ VALUES
 ('Com bastante precisão', 'Chef Confeiteiro', 4),
 ('Testando sabores novos', 'Chef Aventureiro', 4);
 
--- =====================================================
+
 -- PERGUNTA 5
--- =====================================================
+
 
 INSERT INTO pergunta_personalidade (pergunta)
 VALUES ('Qual ambiente parece mais agradável?');
@@ -144,9 +164,9 @@ VALUES
 ('Uma confeitaria charmosa', 'Chef Confeiteiro', 5),
 ('Uma feira gastronômica internacional', 'Chef Aventureiro', 5);
 
--- =====================================================
+
 -- PERGUNTA 6
--- =====================================================
+
 
 INSERT INTO pergunta_personalidade (pergunta)
 VALUES ('Qual palavra mais combina com você?');
@@ -162,9 +182,9 @@ VALUES
 ('Delicadeza', 'Chef Confeiteiro', 6),
 ('Descoberta', 'Chef Aventureiro', 6);
 
--- =====================================================
+
 -- PERGUNTA 7
--- =====================================================
+
 
 INSERT INTO pergunta_personalidade (pergunta)
 VALUES ('Qual refeição parece mais interessante?');
@@ -180,9 +200,7 @@ VALUES
 ('Mesa de sobremesas', 'Chef Confeiteiro', 7),
 ('Prato típico de outro país', 'Chef Aventureiro', 7);
 
--- =====================================================
 -- PERGUNTA 8
--- =====================================================
 
 INSERT INTO pergunta_personalidade (pergunta)
 VALUES ('O que mais importa ao cozinhar?');
@@ -198,9 +216,9 @@ VALUES
 ('O acabamento perfeito', 'Chef Confeiteiro', 8),
 ('Experimentar algo novo', 'Chef Aventureiro', 8);
 
--- =====================================================
+
 -- PERGUNTA 9
--- =====================================================
+
 
 INSERT INTO pergunta_personalidade (pergunta)
 VALUES ('Como seus amigos descreveriam sua comida?');
@@ -216,9 +234,9 @@ VALUES
 ('Caprichada', 'Chef Confeiteiro', 9),
 ('Surpreendente', 'Chef Aventureiro', 9);
 
--- =====================================================
+
 -- PERGUNTA 10
--- =====================================================
+
 
 INSERT INTO pergunta_personalidade (pergunta)
 VALUES ('Qual experiência culinária você escolheria?');
@@ -234,9 +252,8 @@ VALUES
 ('Preparar doces decorados', 'Chef Confeiteiro', 10),
 ('Conhecer sabores internacionais', 'Chef Aventureiro', 10);
 
--- =====================================================
+
 -- PERGUNTA 11
--- =====================================================
 
 INSERT INTO pergunta_personalidade (pergunta)
 VALUES ('Qual utensílio parece mais interessante?');
@@ -252,9 +269,9 @@ VALUES
 ('Bico de confeitar', 'Chef Confeiteiro', 11),
 ('Wok oriental', 'Chef Aventureiro', 11);
 
--- =====================================================
+
 -- PERGUNTA 12
--- =====================================================
+
 
 INSERT INTO pergunta_personalidade (pergunta)
 VALUES ('Qual bebida combina mais com você?');
@@ -270,9 +287,9 @@ VALUES
 ('Chocolate quente', 'Chef Confeiteiro', 12),
 ('Chá típico internacional', 'Chef Aventureiro', 12);
 
--- =====================================================
+
 -- PERGUNTA 13
--- =====================================================
+
 
 INSERT INTO pergunta_personalidade (pergunta)
 VALUES ('O que você faria em um dia livre?');
@@ -288,9 +305,7 @@ VALUES
 ('Fazer sobremesas', 'Chef Confeiteiro', 13),
 ('Conhecer comidas de outros lugares', 'Chef Aventureiro', 13);
 
--- =====================================================
 -- PERGUNTA 14
--- =====================================================
 
 INSERT INTO pergunta_personalidade (pergunta)
 VALUES ('Qual tipo de sobremesa parece mais interessante?');
@@ -306,9 +321,7 @@ VALUES
 ('Macarons decorados', 'Chef Confeiteiro', 14),
 ('Doce típico internacional', 'Chef Aventureiro', 14);
 
--- =====================================================
 -- PERGUNTA 15
--- =====================================================
 
 INSERT INTO pergunta_personalidade (pergunta)
 VALUES ('Qual dessas frases combina mais com você?');
@@ -329,8 +342,6 @@ SELECT * FROM alternativa_personalidade;
 SELECT * FROM resultado_personalidade;
 SELECT * FROM usuario;
 
-TRUNCATE TABLE pergunta_personalidade;
-TRUNCATE TABLE alternativa_personalidade;
 
 
 
