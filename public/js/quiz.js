@@ -169,19 +169,24 @@ fetch("/quiz/salvarResultado", {
         porcentagemAventureiro: porcentagens.aventureiro,
 
         fkUsuario: sessionStorage.ID_USUARIO
-
     })
+
+})
+
+.then(function(resposta){
+
+    console.log("SALVOU");
+
+    window.location.href = "./dashboard/dashboard.html";
+
+})
+
+.catch(function(erro){
+
+    console.log("ERRO NO FETCH");
+    console.log(erro);
 
 });
 
-    document.querySelector(".quiz-container").innerHTML = `
-
-        <div class="resultado-final">
-
-            <h1>Seu resultado foi:</h1>
-
-            <h2>${perfilFinal}</h2>
-            
-        </div>
-    `;
+ 
 }

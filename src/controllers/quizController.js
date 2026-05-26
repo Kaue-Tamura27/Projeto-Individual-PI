@@ -3,9 +3,11 @@ var quizModel = require("../models/quizModel");
 function listarPerguntas(req, res) {
 
     quizModel.listarPerguntas()
+
         .then(function(resultado){
             res.json(resultado);
         })
+
         .catch(function(erro){
             console.log(erro);
             res.status(500).json(erro);
@@ -59,26 +61,39 @@ function salvarResultado(req, res) {
     )
 
     .then(function(resultado){
-
         res.json(resultado);
-
     })
 
     .catch(function(erro){
-
         console.log(erro);
-
         res.status(500).json(erro);
-
     });
 }
 
-function buscarRanking(req, res){
+function buscarResultadoUsuario(req, res) {
 
-    quizModel.buscarRanking()
+    var idUsuario = req.params.idUsuario;
+
+    quizModel.buscarResultadoUsuario(idUsuario)
+
         .then(function(resultado){
             res.json(resultado);
         })
+
+        .catch(function(erro){
+            console.log(erro);
+            res.status(500).json(erro);
+        });
+}
+
+function buscarEstatisticas(req, res) {
+
+    quizModel.buscarEstatisticas()
+
+        .then(function(resultado){
+            res.json(resultado);
+        })
+
         .catch(function(erro){
             console.log(erro);
             res.status(500).json(erro);
@@ -88,5 +103,6 @@ function buscarRanking(req, res){
 module.exports = {
     listarPerguntas,
     salvarResultado,
-    buscarRanking
-}
+    buscarResultadoUsuario,
+    buscarEstatisticas
+};

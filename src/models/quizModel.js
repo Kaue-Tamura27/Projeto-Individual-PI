@@ -3,27 +3,25 @@ var database = require("../database/config");
 function listarPerguntas() {
 
     var instrucao = `
-    
         SELECT
             p.idPergunta,
             p.pergunta,
             a.idAlternativa,
             a.descricao,
             a.perfil
-
         FROM pergunta_personalidade p
-
         JOIN alternativa_personalidade a
             ON p.idPergunta = a.fkPergunta
-
         ORDER BY p.idPergunta;
-
     `;
+
     return database.executar(instrucao);
 }
+
 function salvarResultado(
 
     perfilFinal,
+
     tradicional,
     gourmet,
     criativo,
@@ -31,6 +29,7 @@ function salvarResultado(
     fit,
     confeiteiro,
     aventureiro,
+
     porcentagemTradicional,
     porcentagemGourmet,
     porcentagemCriativo,
@@ -38,13 +37,14 @@ function salvarResultado(
     porcentagemFit,
     porcentagemConfeiteiro,
     porcentagemAventureiro,
+
     fkUsuario
-) 
+
+) {
 
     var instrucao = `
 
-        INSERT INTO resultado_personalidade
-        (
+        INSERT INTO resultado_personalidade (
 
             fkUsuario,
             perfilFinal,
@@ -67,8 +67,7 @@ function salvarResultado(
 
         )
 
-        VALUES
-        (
+        VALUES (
 
             ${fkUsuario},
             '${perfilFinal}',
@@ -96,7 +95,26 @@ function salvarResultado(
     return database.executar(instrucao);
 }
 
-function buscarRanking() {
+function buscarResultadoUsuario(idUsuario) {
+
+    var instrucao = `
+
+        SELECT *
+
+        FROM resultado_personalidade
+
+        WHERE fkUsuario = ${idUsuario}
+
+        ORDER BY dataQuiz DESC
+
+        LIMIT 1;
+
+    `;
+
+    return database.executar(instrucao);
+}
+
+function buscarEstatisticas() {
 
     var instrucao = `
 
@@ -116,9 +134,8 @@ function buscarRanking() {
 }
 
 module.exports = {
-
     listarPerguntas,
     salvarResultado,
-    buscarRanking
-
+    buscarResultadoUsuario,
+    buscarEstatisticas
 };

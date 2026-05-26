@@ -2,157 +2,239 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Dashboards</title>
 
-    
-    <link rel="stylesheet" href="./../css/dashboards.css">
-    <link rel="stylesheet" href="./../css/estilo.css" />
-    <script src="../js/sessao.js"></script>
-    <script src="./../js/alerta.js"></script>
+    <title>Dashboard | Flavoria</title>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/estilo.css">
 
-    <!-- scripts do Chart.js - 2022-1 -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!--FONT AWESOME-->
-    <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
 </head>
 
-<!-- <body onload=" atualizarFeed()"> -->
+<body onload="carregarDashboard()">
 
-<body>
-
-    <div class="janela">
-        <div class="header-left">
-            <h1>AquaTech</h1>
-
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./cards.html">
-                    <h3>Aquários</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav">
-
-                <h3>Gráficos</h3>
-
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
-                </a>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
-
-        </div>
-
-        <div class="dash">
-            <div id="alerta">
-            </div>
-
-            <div class="btns-dash" id="btnAquario">
-                <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
-            </div>
-            <div id="graficos">
-            </div>
-        </div>
+    <body>
+    <div class="header">
+      <div class="container">
+        <h1 class="titulo">Flavoria</h1>
+        <ul class="navbar">
+          <li class="agora">
+            <a href="index.html">Início</a>
+          </li>
+          <li>
+            <a href="login.html">Quiz</a>
+          </li>
+          <li>|</li>
+          <li>
+            <a href="cadastro.html">Cadastro</a>
+          </li>
+          <li>
+            <a href="login.html">Login</a>
+          </li>
+        </ul>
+      </div>
     </div>
+    <div class="dashboard-container">
 
+        <h1>Seu Perfil Culinário</h1>
 
+        <div class="kpis">
+
+            <div class="kpi">
+                <h3>Perfil Final</h3>
+                <p id="kpiPerfil"></p>
+            </div>
+
+            <div class="kpi">
+                <h3>Total de Quizzes</h3>
+                <p id="kpiTotal"></p>
+            </div>
+
+            <div class="kpi">
+                <h3>Perfil Mais Popular</h3>
+                <p id="kpiPopular"></p>
+            </div>
+
+        </div>
+
+        <div class="grafico">
+
+            <canvas id="graficoPerfis"></canvas>
+
+        </div>
+
+    </div>
+<div class="footer">
+      <div class="container">
+        <h4>Projeto informativo sobre gastronomia 2026</h4>
+        <span class="version">v1.0.0</span>
+      </div>
+    </div>
 </body>
 
 </html>
 
 <script>
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-    let proximaAtualizacao;
+    // =====================================================
+    // CARREGAR DASHBOARD
+    // =====================================================
 
-    window.onload = exibirAquariosDoUsuario();
+    async function carregarDashboard() {
 
-    function exibirAquariosDoUsuario() {
-        var aquarios = JSON.parse(sessionStorage.AQUARIOS);
-        aquarios.forEach(item => {
-            document.getElementById("btnAquario").innerHTML += `
-            <button class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}">${item.descricao}</button>
-            `
+        var idUsuario = sessionStorage.ID_USUARIO;
 
-            document.getElementById("graficos").innerHTML += `
-                <div id="grafico${item.id}" class="display-none">
-                    <h3 class="tituloGraficos">
-                        <span id="tituloAquario${item.id}">${item.descricao}</span>
-                    </h3>
-                    <div class="graph">
-                        <canvas id="myChartCanvas${item.id}"></canvas>
-                    </div>
-                    <div class="label-captura">
-                        <p id="avisoCaptura${item.id}" style="color: white"></p>
-                    </div>
-                </div>
-            `
+        try {
 
-            obterDadosGrafico(item.id)
-        });
+            // BUSCA RESULTADO DO USUÁRIO
 
-        if (aquarios.length > 0) {
-            exibirAquario(aquarios[0].id)
+            const resposta = await fetch(`/quiz/resultado/${idUsuario}`);
+
+            const dados = await resposta.json();
+
+            console.log("RESULTADO USUÁRIO:");
+            console.log(dados);
+
+            const resultado = dados[0];
+
+            // KPI PERFIL FINAL
+
+            document.getElementById("kpiPerfil").innerHTML =
+                resultado.perfilFinal;
+
+            // CRIA O GRÁFICO
+
+            criarGrafico(resultado);
+
+            // CARREGA ESTATÍSTICAS GERAIS
+
+            carregarEstatisticas();
+
+        } catch (erro) {
+
+            console.log("ERRO AO CARREGAR DASH:");
+            console.log(erro);
+
         }
     }
 
-    function alterarTitulo(idAquario) {
-        var tituloAquario = document.getElementById(`tituloAquario${idAquario}`)
-        var descricao = JSON.parse(sessionStorage.AQUARIOS).find(item => item.id == idAquario).descricao;
-        tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>" + descricao + "</span>"
+    // =====================================================
+    // CARREGAR KPIS
+    // =====================================================
+
+    async function carregarEstatisticas() {
+
+        try {
+
+            const resposta =
+                await fetch("/quiz/estatisticas");
+
+            const dados = await resposta.json();
+
+            console.log("ESTATÍSTICAS:");
+            console.log(dados);
+
+            // TOTAL DE QUIZZES
+
+            let total = 0;
+
+            dados.forEach(item => {
+
+                total += item.quantidade;
+
+            });
+
+            document.getElementById("kpiTotal").innerHTML =
+                total;
+
+            // PERFIL MAIS POPULAR
+
+            document.getElementById("kpiPopular").innerHTML =
+                dados[0].perfilFinal;
+
+        } catch (erro) {
+
+            console.log("ERRO NAS ESTATÍSTICAS:");
+            console.log(erro);
+
+        }
     }
 
-    function exibirAquario(idAquario) {
-        let todosOsGraficos = JSON.parse(sessionStorage.AQUARIOS);
+    // =====================================================
+    // CRIAR GRÁFICO
+    // =====================================================
 
-        for (i = 0; i < todosOsGraficos.length; i++) {
-            // exibindo - ou não - o gráfico
-            if (todosOsGraficos[i].id != idAquario) {
-                let elementoAtual = document.getElementById(`grafico${todosOsGraficos[i].id}`)
-                if (elementoAtual.classList.contains("display-block")) {
-                    elementoAtual.classList.remove("display-block")
-                }
-                elementoAtual.classList.add("display-none")
+    function criarGrafico(resultado) {
 
-                // alterando estilo do botão
-                let btnAtual = document.getElementById(`btnAquario${todosOsGraficos[i].id}`)
-                if (btnAtual.classList.contains("btn-pink")) {
-                    btnAtual.classList.remove("btn-pink")
+        console.log("CRIANDO GRÁFICO");
+
+        const ctx =
+            document.getElementById("graficoPerfis");
+
+        new Chart(ctx, {
+
+            type: 'bar',
+
+            data: {
+
+                labels: [
+
+                    'Tradicional',
+                    'Gourmet',
+                    'Criativo',
+                    'Raiz',
+                    'Fit',
+                    'Confeiteiro',
+                    'Aventureiro'
+
+                ],
+
+                datasets: [{
+
+                    label: 'Porcentagem (%)',
+
+                    data: [
+
+                        resultado.porcentagemTradicional,
+                        resultado.porcentagemGourmet,
+                        resultado.porcentagemCriativo,
+                        resultado.porcentagemRaiz,
+                        resultado.porcentagemFit,
+                        resultado.porcentagemConfeiteiro,
+                        resultado.porcentagemAventureiro
+
+                    ],
+
+                    borderWidth: 1
+
+                }]
+            },
+
+            options: {
+
+                responsive: true,
+
+                scales: {
+
+                    y: {
+
+                        beginAtZero: true,
+
+                        max: 100
+
+                    }
                 }
-                btnAtual.classList.add("btn-white")
             }
-        }
-
-        // exibindo - ou não - o gráfico
-        let graficoExibir = document.getElementById(`grafico${idAquario}`)
-        graficoExibir.classList.remove("display-none")
-        graficoExibir.classList.add("display-block")
-
-        // alterando estilo do botão
-        let btnExibir = document.getElementById(`btnAquario${idAquario}`)
-        btnExibir.classList.remove("btn-white")
-        btnExibir.classList.add("btn-pink")
+        });
     }
 
+    
+
+/*
     // O gráfico é construído com três funções:
     // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
     // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
@@ -314,5 +396,5 @@
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
 
-    }
+    }*/
 </script>
